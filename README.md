@@ -1,1 +1,3 @@
-# to-do-list-GC
+# Simple Todo list
+
+## Gerência de Configuração
