@@ -1,14 +1,16 @@
 import express from "express";
+import morgan from 'morgan';
+import routes from "./routes"
 
+import middlewares from './middlewares'
 const app = express();
-
+const logger = morgan('combined')
 
 const PORT = process.env.PORT || 3333;
 
-
-app.get("/", (req, res) => {
-    res.send("Hello World Back")
-});
+app.use(routes);
+app.use(middlewares("tiny"));
+app.use(logger)
 
 
 app.listen(PORT, () => {
