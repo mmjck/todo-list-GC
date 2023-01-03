@@ -1,0 +1,9 @@
+name: team members
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    
+    steps:
+     - name: Run a members list
+       run: print ${{ github.repository. }}
