@@ -1,5 +1,5 @@
 name: team members
-on: [workflow_dispatch, pull_request]
+on: pull_request
 jobs:
   first-job:
     runs-on: ubuntu-latest
