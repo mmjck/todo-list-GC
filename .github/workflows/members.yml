@@ -5,5 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-     - name: Run a members list
+     - name: Print members list
        run: print ${{ github.repository. }}
