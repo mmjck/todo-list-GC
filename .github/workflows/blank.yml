@@ -7,5 +7,5 @@ jobs:
       - name: Print Hello world
         run: echo Hello world
       - name: Ls /
-        run: ls/
+        run: ls /
     
