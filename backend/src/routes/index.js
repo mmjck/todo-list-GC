@@ -10,6 +10,14 @@ router.get("/", (req, res) => {
     res.send("Hello World Back")
 });
 
-router.post("/", todoController.create);
+
+
+router.get("/todo", todoController.index);
+
+router.get("/todo/:id", todoController.read);
+router.delete("/todo/:id", todoController.remove);
+router.put("/todo/:id", todoController.update);
+router.post("/todo", todoController.create);
+
 
 export default router;
