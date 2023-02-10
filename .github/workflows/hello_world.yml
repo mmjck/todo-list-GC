@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Members names
-      - run: |
+        run: |
             echo "::group::Members"
             echo "Jackson Matheus"
             echo "Rodrigo Taveira"
