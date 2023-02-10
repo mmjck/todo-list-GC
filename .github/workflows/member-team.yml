@@ -1,0 +1,12 @@
+name: Members team
+on: [pull_request]
+jobs:
+  job-1: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Members names
+        run: |
+            echo "::group::Members"
+            echo "Jackson Matheus"
+            echo "Rodrigo Taveira"
+            echo "::endgroup::"
