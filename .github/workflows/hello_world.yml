@@ -4,8 +4,11 @@ jobs:
   job-1: 
     runs-on: ubuntu-latest
     steps:
-      - name: Print Hello world
-        run: echo Hello world
-      - name: Ls /
-        run: ls /
+      - name: Members names
+      - run: |
+            echo "::group::Members"
+            echo "Jackson Matheus"
+            echo "Rodrigo Taveira"
+            echo "::endgroup::"
+
     
