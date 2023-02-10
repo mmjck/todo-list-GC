@@ -1,5 +1,5 @@
 name: Helo world
-on: [workflow_dispatch, pull_request]
+on: [workflow_dispatch]
 jobs:
   job-1: 
     runs-on: ubuntu-latest
