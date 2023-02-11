@@ -1,6 +1,12 @@
 name: Test worklow
-on: [workflow_dispatch, pull_request]
-
+on:
+ pull_request:
+       types:
+            - opened
+            - reopened            
+ push:
+      paths:
+       - 'backend/**'
       
 jobs:
   test:
