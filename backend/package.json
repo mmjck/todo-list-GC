@@ -2,21 +2,30 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "todo list api",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -r esm src/index.js"
+    "start": "nodemon -r esm ./index.js",
+    "pretest": "docker exec todo-app-backend npx sequelize db:migrate --env test",
+    "test": "NODE_ENV=test docker exec todo-app-backend npx jest --testTimeout=10000"
   },
   "author": "Jackson Matheus",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "babel-jest": "^29.4.2",
     "dotenv": "^16.0.3",
     "esm": "^3.2.25",
     "express": "^4.18.2",
+    "jest-junit": "^15.0.0",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",
-    "sequelize": "^6.28.0",
-    "sequelize-cli": "^6.5.2"
+    "sequelize": "^6.27.0",
+    "sequelize-cli": "^6.5.2",
+    "supertest": "^6.3.3"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
   }
 }
