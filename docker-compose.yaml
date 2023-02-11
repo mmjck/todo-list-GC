@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   backend:
+    container_name: todo-app-backend
     build:
       context: ./backend
     ports: 
@@ -8,7 +9,7 @@ services:
     volumes:
       - ./backend:/usr/app
     env_file: 
-      - ./backend/.env
+      - ./.env
   frontend:
     build:
       context: ./frontend
@@ -17,20 +18,33 @@ services:
     volumes:
       - ./frontend:/usr/app
     env_file: 
-      - ./frontend/.env
+      - ./.env
   db:
+    restart: always
     image: mysql:8.0
     ports:
-      - 3307:3306
+      - ${PORT_MYSQL}:3310
     volumes:
-      - mysql_data:/var/lib/mysql
+      - mysql:/var/lib/mysql
       - mysql_config:/etc/mysql
     env_file:
       - ./.env 
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-
+  db_test:
+    restart: always
+    image: mysql:8.0
+    ports:
+      - ${TEST_PORT_MYSQL}:3308
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE_TEST}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - mysql_test:/var/lib/mysql
+      - mysql_config-test:/etc/mysql
 volumes:
-  mysql_data:
+  mysql:
   mysql_config:
+  mysql_test:
+  mysql_config-test:
