@@ -1,0 +1,33 @@
+name: Test worklow
+on: [workflow_dispatch, pull_request]
+
+      
+jobs:
+  test:
+      runs-on: ubuntu-latest
+      env:
+        NODE_ENV: test
+      steps:
+        - name: Get the code
+          uses: actions/checkout@v3.3.0
+        - name: Intall NodeJs
+          uses: actions/setup-node@v3
+          with:
+            node-version: 18
+        - name: Install dependencies
+          run: npm ci
+          working-directory: backend
+        - name: Docker compose
+          run: |
+              docker-compose up -d backend db_test 
+              docker ps
+        - name: Sleep for 10 seconds
+          uses: jakejarvis/wait-action@master
+          with:
+             time: "10s"
+        - name: Run migrations
+          run: docker-compose exec -T backend npx sequelize db:migrate --env test
+        - name: Run tests
+          run: docker-compose exec -T backend npx jest
+        
+          
