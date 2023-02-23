@@ -9,18 +9,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    needs: [test]
     steps:
-      steps:
-        - name: Upload artificats
-          uses: actions/upload-artificat@v3
-          with:
-            name: build-files
-            path: frontend/build
+      - name: Upload artificats
+        uses: actions/upload-artificat@v3
+        with:
+          name: build-files
+          path: frontend/build
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [test, build]
+    needs: [build]
     steps:
       - name: Get build artificats
         uses: actions/download-artificat@v3
