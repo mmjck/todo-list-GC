@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Upload artificats
-        uses: actions/upload-artificat@v3
+        uses: actions/upload-artifact@v3
         with:
           name: build-files
           path: frontend/build
