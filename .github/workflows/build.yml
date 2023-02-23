@@ -21,6 +21,7 @@ jobs:
         working-directory: frontend
       - name: Generate build
         run: npm build
+        working-directory: frontend
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
